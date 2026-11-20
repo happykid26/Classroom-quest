@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Classroom Quest</title>
+
+<style>
+
+body {
+
+  font-family: Arial, sans-serif;
+
+  background: #f1f0ff;
+
+  color: #29264a;
+
+  text-align: center;
+
+  padding: 25px;
+
+}
+
+.card {
+
+  background: white;
+
+  padding: 25px;
+
+  margin: 20px auto;
+
+  border-radius: 18px;
+
+  max-width: 500px;
+
+  box-shadow: 0 4px 15px #ccc;
+
+}
+
+button {
+
+  background: #7064d8;
+
+  color: white;
+
+  border: none;
+
+  padding: 13px 20px;
+
+  border-radius: 12px;
+
+  margin: 7px;
+
+  font-size: 16px;
+
+}
+
+button:hover { background: #5145b5; }
+
+</style>
+
+</head>
+
+<body>
+
+<h1>⭐ Classroom Quest ⭐</h1>
+
+<p>Learn, explore, and earn rewards!</p>
+
+<div class="card">
+
+<h2>Welcome, Adventurer!</h2>
+
+<p>Your learning adventure starts here.</p>
+
+<input id="student" placeholder="Enter your name">
+
+<br><br>
+
+<button onclick="start()">Start Adventure!</button>
+
+</div>
+
+<div id="dashboard" class="card" hidden>
+
+<h2 id="greeting"></h2>
+
+<h3>🏆 Points: <span id="points">0</span></h3>
+
+<button onclick="learn()">📚 Learning</button>
+
+<button onclick="explore()">🌎 Explore</button>
+
+<button onclick="pets()">🐾 Pets</button>
+
+<div id="activity"></div>
+
+</div>
+
+<script>
+
+let score = 0;
+
+function start() {
+
+  let name = document.getElementById("student").value;
+
+  if (!name.trim()) {
+
+    alert("Please enter your name!");
+
+    return;
+
+  }
+
+  document.getElementById("greeting").textContent =
+
+    "Welcome, " + name + "!";
+
+  document.getElementById("dashboard").hidden = false;
+
+}
+
+function learn() {
+
+  document.getElementById("activity").innerHTML =
+
+    '<h3>📚 Learning Center</h3><p>What is 5 + 3?</p><button onclick="answer(8)">8</button><button onclick="answer(9)">9</button>';
+
+}
+
+function answer(num) {
+
+  if (num === 8) {
+
+    score += 10;
+
+    document.getElementById("points").textContent = score;
+
+    alert("Correct! You earned 10 points!");
+
+  } else {
+
+    alert("Try again!");
+
+  }
+
+}
+
+function explore() {
+
+  document.getElementById("activity").innerHTML =
+
+    "<h3>🌎 Explore!</h3><p>Complete learning challenges to unlock new adventures!</p>";
+
+}
+
+function pets() {
+
+  document.getElementById("activity").innerHTML =
+
+    "<h3>🐾 Pet Adoption</h3><p>Meet your future bunny, fox, or puppy!</p>";
+
+}
+
+</script>
+
+</body>
+
+</html>
